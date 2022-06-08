@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:t_twenty/screens/home_screen.dart';
+import 'package:t_twenty/screens/introduction_screen.dart';
 
-import 'screens/home_screen.dart';
+bool show = true;
 
-void main() {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = await SharedPreferences.getInstance();
+  show = prefs.getBool('ON_BOARDING') ?? true;
   runApp(const MyApp());
 }
 
@@ -30,7 +35,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: HomeScreen());
+        home: show?IntroScreen(): HomeScreen());
   }
 }
 

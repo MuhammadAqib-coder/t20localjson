@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class Dimension {
   static var device =
-      MediaQueryData.fromWindow(WidgetsBinding.instance!.window);
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window);
   // static Size size = WidgetsBinding.instance!.window.physicalSize;
   static double screenHeight = device.size.height;
   static double screenWidth = device.size.width;
